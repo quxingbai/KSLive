@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSLive", "KSLive\KSLive.csproj", "{099753D2-3E79-4862-B1B9-F38F34361B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSLiveDataContext", "KSLiveDataContext\KSLiveDataContext.csproj", "{492FD93A-F3F2-42EF-8F5A-123AD0C88B10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{099753D2-3E79-4862-B1B9-F38F34361B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099753D2-3E79-4862-B1B9-F38F34361B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099753D2-3E79-4862-B1B9-F38F34361B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099753D2-3E79-4862-B1B9-F38F34361B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{492FD93A-F3F2-42EF-8F5A-123AD0C88B10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492FD93A-F3F2-42EF-8F5A-123AD0C88B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492FD93A-F3F2-42EF-8F5A-123AD0C88B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492FD93A-F3F2-42EF-8F5A-123AD0C88B10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4B530BC-11FB-4D55-BEEF-E9CF460D6EDC}
+	EndGlobalSection
+EndGlobal
