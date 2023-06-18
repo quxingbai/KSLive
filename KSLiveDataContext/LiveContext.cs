@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace KSLiveDataContext
 {
-    public class LiveContext
+    public class LiveContext : IDisposable
     {
         public class JsonData
         {
@@ -43,23 +43,27 @@ namespace KSLiveDataContext
             {
                 this.context = context;
             }
-            public Task ToDownloadAction(Func<byte[],bool> Downloaded)
+            public Task ToDownloadAction(Func<byte[], TimeSpan, bool> Downloading, Action<TimeSpan> Downloaded)
             {
+                DateTime time = DateTime.Now;
                 return Task.Run(() =>
                 {
                     var s = context.GetVideoStream();
                     s.Wait();
                     var stream = s.Result;
                     long read = 0;
-                    byte[] bs = new byte[1024*500];
+                    byte[] bs = new byte[1024 * 500];
                     while ((read = stream.Read(bs, 0, bs.Length)) > 0)
                     {
                         byte[] bss = new byte[read];
                         Array.Copy(bs, bss, read);
-                        var b = Downloaded.Invoke(bss);
+                        var b = Downloading.Invoke(bss, DateTime.Now - time);
                         Array.Clear(bss, 0, bss.Length);
                         if (!b) break;
                     }
+                    Downloaded?.Invoke(DateTime.Now - time);
+                    s.Dispose();
+                    stream.Dispose();
                 });
             }
         }
@@ -96,7 +100,13 @@ namespace KSLiveDataContext
         public Task<Stream> GetVideoStream()
         {
             var url = Json.LiveRoomUrl;
-            return http.GetStreamAsync(url);
+            var ss = http.GetStreamAsync(url);
+            return ss;
+        }
+
+        public void Dispose()
+        {
+            http.Dispose();
         }
     }
 }
